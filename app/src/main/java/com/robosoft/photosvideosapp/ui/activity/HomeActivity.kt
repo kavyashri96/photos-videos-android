@@ -28,6 +28,7 @@ class HomeActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = ""
+        mainVewModel.getBackDropImage()
         setAppBarOffsetListener()
         setUpView()
         setBackDropImage()

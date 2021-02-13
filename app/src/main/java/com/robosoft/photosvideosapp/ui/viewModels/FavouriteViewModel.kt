@@ -1,6 +1,5 @@
 package com.robosoft.photosvideosapp.ui.viewModels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,12 +16,15 @@ class FavouriteViewModel(
     private val networkHelper: NetworkHelper
 ) : ViewModel() {
 
-    private val TAG = "BASICS"
     private val disposable = CompositeDisposable()
 
-    private val _photos = MutableLiveData<Resource<List<Photo>>>()
-    val photo: LiveData<Resource<List<Photo>>>
-        get() = _photos
+    private val _favPhotosLiveData = MutableLiveData<Resource<List<Photo>>>()
+    val favPhotosLiveData: LiveData<Resource<List<Photo>>>
+        get() = _favPhotosLiveData
+
+    private val _errorLiveData = MutableLiveData<Throwable>()
+    val errorLiveData: LiveData<Throwable>
+        get() = _errorLiveData
 
 
     fun getFavouritePhotos() {
@@ -31,15 +33,23 @@ class FavouriteViewModel(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({ photos ->
-                    _photos.postValue(Resource.success(photos))
-                    Log.e(TAG, "$photos")
+                    _favPhotosLiveData.postValue(Resource.success(photos))
                 }, { error ->
-                    Log.e("Error", "${error.message}")
+                    _errorLiveData.postValue(error)
                 })
         )
     }
 
     fun favouritePhoto(photo: Photo) {
         photoVideoDbRepository.addPhotoToFavourite(photo)
+    }
+
+    fun unFavouritePhoto(photo: Photo) {
+        photoVideoDbRepository.unFavouritePhoto(photo)
+    }
+
+    override fun onCleared() {
+        disposable.clear()
+        super.onCleared()
     }
 }

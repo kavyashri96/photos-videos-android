@@ -8,4 +8,6 @@ class PhotoVideoDbRepository(private val photosDao: PhotosDao) {
     fun addPhotoToFavourite(photo: Photo) = photosDao.insertPhoto(photo)
 
     fun getFavouritePhotos() = photosDao.getFavouritePhotos()
+
+    fun unFavouritePhoto(photo: Photo) = photosDao.delete(photo)
 }

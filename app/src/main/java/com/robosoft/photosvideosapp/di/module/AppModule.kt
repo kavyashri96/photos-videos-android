@@ -1,6 +1,5 @@
 package com.robosoft.photosvideosapp.di.module
 
-
 import android.content.Context
 import androidx.room.Room
 import com.robosoft.photosvideosapp.BuildConfig
@@ -24,13 +23,11 @@ val appModule = module {
     single { provideRetrofit(get()) }
     single { provideApiService(get()) }
     single { provideNetworkHelper(androidContext()) }
-
     // APIHelperImpl extends APIHelper
     single { ApiHelper(apiService = get()) }
-
     // Room Database
     single {
-        Room.databaseBuilder(androidApplication(), PhotosAndVideosDatabase::class.java, "P.db")
+        Room.databaseBuilder(androidApplication(), PhotosAndVideosDatabase::class.java, "PhotosVideosApp.db")
             .allowMainThreadQueries()
             .build()
     }
@@ -39,15 +36,18 @@ val appModule = module {
 
 private fun provideNetworkHelper(context: Context) = NetworkHelper(context)
 
-private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
-    val loggingInterceptor = HttpLoggingInterceptor()
-    loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-    OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
-        .build()
-} else OkHttpClient
-    .Builder()
-    .build()
+private fun provideOkHttpClient() =
+    if (BuildConfig.DEBUG) {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+    } else {
+        OkHttpClient
+            .Builder()
+            .build()
+    }
 
 private fun provideRetrofit(
     okHttpClient: OkHttpClient
