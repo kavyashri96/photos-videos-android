@@ -2,8 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.PhotosVideosApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -14,8 +15,11 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="AfonsoPinto">
+
+    <style name="TextProfile" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textSize">14sp</item>
     </style>
+
 </resources>

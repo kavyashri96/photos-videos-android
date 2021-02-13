@@ -48,9 +48,7 @@ class PhotosAdapter(private val itemClickListener: ((Pair<ACTION, Photo>) -> Uni
         fun bind(result: Photo) {
             itemView.apply {
                 findViewById<ImageView>(R.id.image).setImage(result.src.medium)
-                findViewById<ImageView>(R.id.profileImage).setImage(result.photographer_url)
                 findViewById<TextView>(R.id.textName).text  = result.photographer
-                Log.d("KAV", "${result.photographer_url}")
             }
         }
     }

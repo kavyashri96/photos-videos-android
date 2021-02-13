@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bottom_gradient_start">#121317</color>
     <color name="bottom_gradient_end">#0000</color>
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryDark">#302E2E</color>
+    <color name="colorPrimaryVariant">#575454</color>
 </resources>
