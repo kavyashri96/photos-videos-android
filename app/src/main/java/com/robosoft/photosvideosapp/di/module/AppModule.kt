@@ -2,13 +2,16 @@ package com.robosoft.photosvideosapp.di.module
 
 
 import android.content.Context
+import androidx.room.Room
 import com.robosoft.photosvideosapp.BuildConfig
 import com.robosoft.photosvideosapp.BuildConfig.BASE_URL
+import com.robosoft.photosvideosapp.data.database.PhotosAndVideosDatabase
 import com.robosoft.photosvideosapp.data.network.api.ApiHelper
 import com.robosoft.photosvideosapp.data.network.api.ApiService
 import com.robosoft.photosvideosapp.utils.NetworkHelper
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -24,6 +27,14 @@ val appModule = module {
 
     // APIHelperImpl extends APIHelper
     single { ApiHelper(apiService = get()) }
+
+    // Room Database
+    single {
+        Room.databaseBuilder(androidApplication(), PhotosAndVideosDatabase::class.java, "P.db")
+            .allowMainThreadQueries()
+            .build()
+    }
+    single { get<PhotosAndVideosDatabase>().photoDao() }
 }
 
 private fun provideNetworkHelper(context: Context) = NetworkHelper(context)
