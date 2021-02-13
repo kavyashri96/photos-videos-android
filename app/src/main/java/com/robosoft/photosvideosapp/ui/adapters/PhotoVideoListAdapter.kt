@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.robosoft.photoplayandroid.utils.setImage
+import com.robosoft.photosvideosapp.utils.setImage
 import com.robosoft.photosvideosapp.R
 import com.robosoft.photosvideosapp.data.model.Photo
 import com.robosoft.photosvideosapp.data.model.Src

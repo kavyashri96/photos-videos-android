@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:text="Photos"
+            android:text="@string/photos"
             android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,9 +25,9 @@
             android:id="@+id/btnVideos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="@dimen/grid_24"
             android:background="@android:color/transparent"
-            android:text="Videos"
+            android:text="@string/videos"
             android:textColor="@android:color/black"
             app:layout_constraintStart_toEndOf="@+id/btnPhoto"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,9 +36,9 @@
             android:id="@+id/btnFavourite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="@dimen/grid_24"
             android:background="@android:color/transparent"
-            android:text="Favorite"
+            android:text="@string/favorite"
             android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

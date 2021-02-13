@@ -27,7 +27,7 @@ val appModule = module {
     single { ApiHelper(apiService = get()) }
     // Room Database
     single {
-        Room.databaseBuilder(androidApplication(), PhotosAndVideosDatabase::class.java, "PhotosVideosApp.db")
+        Room.databaseBuilder(androidApplication(), PhotosAndVideosDatabase::class.java, DB_NAME)
             .allowMainThreadQueries()
             .build()
     }
@@ -61,3 +61,5 @@ private fun provideRetrofit(
 
 private fun provideApiService(retrofit: Retrofit): ApiService =
     retrofit.create(ApiService::class.java)
+
+const val DB_NAME = "PhotosVideosApp.db"

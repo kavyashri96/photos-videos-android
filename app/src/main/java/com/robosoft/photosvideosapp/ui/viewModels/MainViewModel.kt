@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.robosoft.photosvideosapp.R
+import com.robosoft.photosvideosapp.app.PhotosVideosApp
 import com.robosoft.photosvideosapp.data.model.PhotoResults
 import com.robosoft.photosvideosapp.data.network.repository.MainRepository
 import com.robosoft.photosvideosapp.utils.NetworkHelper
@@ -32,9 +34,6 @@ class MainViewModel(
     val networkErrorLiveData: LiveData<Boolean>
         get() = _networkErrorLiveData
 
-
-
-
     fun searchPhotos(query: String) {
         if(networkHelper.isNetworkConnected()) {
             disposable.addAll(
@@ -44,7 +43,7 @@ class MainViewModel(
                     .subscribe({
                         _photosLiveData.postValue(Resource.success(it.body()))
                     }, {
-                        Log.e("Error", "${it.message}")
+                        Log.e(PhotosVideosApp.getContext().getString(R.string.error), "${it.message}")
                     })
             )
         }else _networkErrorLiveData.postValue(true)
@@ -58,7 +57,7 @@ class MainViewModel(
                 .subscribe({ result ->
                     _backDropImage.postValue(Resource.success(result.body()))
                 }, {
-                    Log.e("Error", "${it.message}")
+                    Log.e(PhotosVideosApp.getContext().getString(R.string.error), "${it.message}")
                 })
         )
     }

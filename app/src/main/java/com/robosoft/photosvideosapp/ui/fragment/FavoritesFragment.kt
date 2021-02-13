@@ -85,7 +85,7 @@ class FavoritesFragment : BaseFragment() {
           if (action == ACTION.CARD_CLICK) {
               Toast.makeText(
                   activity,
-                  "Added ${action}  ${photo.photographer_url} to .....",
+                  getString(R.string.clicked_on)+ "${photo.id}",
                   Toast.LENGTH_LONG
               ).show()
           } else {
@@ -94,7 +94,7 @@ class FavoritesFragment : BaseFragment() {
               adapter.notifyDataSetChanged()
               Toast.makeText(
                   activity,
-                  "Added to favorites",
+                  getString(R.string.removed_favourite),
                   Toast.LENGTH_LONG
               ).show()
           }

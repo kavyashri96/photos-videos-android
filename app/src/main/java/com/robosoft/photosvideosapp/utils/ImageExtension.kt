@@ -1,4 +1,4 @@
-package com.robosoft.photoplayandroid.utils
+package com.robosoft.photosvideosapp.utils
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

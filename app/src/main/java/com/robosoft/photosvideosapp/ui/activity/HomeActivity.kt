@@ -8,7 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
-import com.robosoft.photoplayandroid.utils.setImage
+import com.robosoft.photosvideosapp.utils.setImage
 import com.robosoft.photosvideosapp.R
 import com.robosoft.photosvideosapp.ui.fragment.HomeFragment
 import com.robosoft.photosvideosapp.ui.viewModels.MainViewModel
