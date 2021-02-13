@@ -23,7 +23,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setupObserver()
         // TODO to be removed
-        favouriteViewModel.favouritePhoto(
+       /* favouriteViewModel.favouritePhoto(
             Photo(avg_color= "748B52",
                 height=1334,
                 id=45170,
@@ -31,7 +31,8 @@ class MainActivity : BaseActivity() {
                 photographer_id=2659,
                 photographer_url="https://www.pexels.com/@pixabay",
                 url="https://www.pexels.com/photo/assorted-color-kittens-45170/",
-                width=2400))
+                width=2400,
+                src = ))*/
         mainViewModel.searchPhotos("animals")
         findViewById<TextView>(R.id.textView).setOnClickListener {
             favouriteViewModel.getFavouritePhotos()

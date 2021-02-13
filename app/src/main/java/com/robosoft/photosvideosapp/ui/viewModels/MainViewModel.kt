@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.robosoft.photosvideosapp.data.model.Photo
 import com.robosoft.photosvideosapp.data.model.PhotoResults
 import com.robosoft.photosvideosapp.data.network.repository.MainRepository
 import com.robosoft.photosvideosapp.utils.NetworkHelper
@@ -25,8 +26,14 @@ class MainViewModel(
     val images: LiveData<Resource<PhotoResults>>
         get() = _images
 
+    private val _backDropImage = MutableLiveData<Resource<PhotoResults>>()
+    val backDropImage: LiveData<Resource<PhotoResults>>
+        get() = _backDropImage
 
-    // Using Rx Network call
+    init {
+        getBackDropImage()
+    }
+
     fun searchPhotos(query: String) {
         disposable.addAll(
             mainRepository.searchPhotos(query)
@@ -44,5 +51,18 @@ class MainViewModel(
 
     private fun onFailure(value: Throwable?) {
         Log.e("Error", "${value}")
+    }
+
+    fun getBackDropImage() {
+        disposable.addAll(
+            mainRepository.getBackDropImage()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({ result ->
+                   _backDropImage.postValue(Resource.success(result.body()))
+                }, {
+                    Log.e("Error", "${it.message}")
+                })
+        )
     }
 }

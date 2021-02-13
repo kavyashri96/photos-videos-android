@@ -1,6 +1,7 @@
 package com.robosoft.photosvideosapp.data.model
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -21,5 +22,7 @@ data class Photo(
     @ColumnInfo(name = "url")
     val url: String,
     @ColumnInfo(name = "width")
-    val width: Int
+    val width: Int,
+    @Embedded
+    val src: Src
 )

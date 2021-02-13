@@ -17,6 +17,13 @@ interface ApiService {
         @Query("locale") Locale: String = LOCALE
     ): Single<Response<PhotoResults>>
 
+    @Headers(AUTH_KEY)
+    @GET("curated")
+    fun getBackDropImage(
+        @Query("per_page") perPage: Int = DEFAULT_PAGE_COUNT,
+        @Query("locale") Locale: String = LOCALE
+    ): Single<Response<PhotoResults>>
+
     companion object {
         const val LOCALE = "en-US"
         const val DEFAULT_PAGE_COUNT = 20
